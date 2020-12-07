@@ -38,16 +38,21 @@ public class VilleDAOImpl implements VilleDAO {
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
 				if (rs != null) {
 					rs.close();
 				}
-				
-				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -82,11 +87,18 @@ public class VilleDAOImpl implements VilleDAO {
 		} catch (SQLException e) {
 			System.out.println("Une erreur s'est produite.");
 			return null;
-		}finally {
+		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
 				if (rs != null) {
 					rs.close();
 				}
@@ -107,19 +119,26 @@ public class VilleDAOImpl implements VilleDAO {
 			stmt.executeUpdate(
 					"Insert into ville_france(Code_commune_INSEE,Nom_commune,Libelle_acheminement,Ligne_5,Latitude,Code_postal,Longitude)"
 							+ " values(" + ville.getCodeCommune() + ",'" + ville.getNomCommune() + "','"
-							+ ville.getLibelleAcheminement() + "','" + ville.getLigne() + "'," + ville.getLatitude()
-							+ "," + ville.getCodePostal() + "," + ville.getLongitude() + ")");
+							+ ville.getLibelleAcheminement() + "','" + ville.getLigne() + "'," + ville.getLatitude() + ","
+							+ ville.getCodePostal() + "," + ville.getLongitude() + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if (con != null) {
 					con.close();
 				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+
 				if (stmt != null) {
 					stmt.close();
 				}
-				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -134,17 +153,24 @@ public class VilleDAOImpl implements VilleDAO {
 			con = JDBCConfiguration.getonnexionBDD();
 			stmt = con.createStatement();
 			stmt.executeUpdate("UPDATE ville_france SET Nom_commune=' " + ville.getNomCommune() + "', Code_postal='"
-					+ ville.getCodePostal() + "', Libelle_acheminement='" + ville.getLibelleAcheminement()
-					+ "', Ligne_5 = '" + ville.getLigne() + "', Latitude='" + ville.getLatitude() + "', Longitude='"
-					+ ville.getLongitude() + "'  WHERE Code_commune_INSEE=' " + ville.getCodeCommune() + "'");
+					+ ville.getCodePostal() + "', Libelle_acheminement='" + ville.getLibelleAcheminement() + "', Ligne_5 = '"
+					+ ville.getLigne() + "', Latitude='" + ville.getLatitude() + "', Longitude='" + ville.getLongitude()
+					+ "'  WHERE Code_commune_INSEE=' " + ville.getCodeCommune() + "'");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if (con != null) {
 					con.close();
 				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
 				if (stmt != null) {
 					stmt.close();
 				}
@@ -165,11 +191,18 @@ public class VilleDAOImpl implements VilleDAO {
 			stmt.executeUpdate("DELETE FROM ville_france WHERE Code_commune_INSEE = '" + code_commune_INSEE + "'");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if (con != null) {
 					con.close();
 				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
 				if (stmt != null) {
 					stmt.close();
 				}
