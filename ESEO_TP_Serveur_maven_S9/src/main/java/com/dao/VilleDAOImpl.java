@@ -20,9 +20,10 @@ public class VilleDAOImpl implements VilleDAO {
 
 		String requete = "SELECT * FROM ville_france";
 		Statement stmt = null;
+		ResultSet rs = null;
 		try {
 			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(requete);
+			rs = stmt.executeQuery(requete);
 			while (rs.next()) {
 				ville = new Ville();
 				ville.setCodeCommune(rs.getString(1));
@@ -39,7 +40,14 @@ public class VilleDAOImpl implements VilleDAO {
 			e.printStackTrace();
 		}finally {
 			try {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+				
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -55,9 +63,10 @@ public class VilleDAOImpl implements VilleDAO {
 		String requete = "SELECT * FROM ville_france WHERE code_postal = " + param;
 		Connection con = JDBCConfiguration.getonnexionBDD();
 		Statement stmt = null;
+		ResultSet rs = null;
 		try {
 			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(requete);
+			rs = stmt.executeQuery(requete);
 			while (rs.next()) {
 				ville = new Ville();
 				ville.setCodeCommune(rs.getString(1));
@@ -75,7 +84,12 @@ public class VilleDAOImpl implements VilleDAO {
 			return null;
 		}finally {
 			try {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -86,9 +100,10 @@ public class VilleDAOImpl implements VilleDAO {
 
 	public void setVille(Ville ville) {
 		Connection con = null;
+		Statement stmt = null;
 		try {
 			con = JDBCConfiguration.getonnexionBDD();
-			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
 			stmt.executeUpdate(
 					"Insert into ville_france(Code_commune_INSEE,Nom_commune,Libelle_acheminement,Ligne_5,Latitude,Code_postal,Longitude)"
 							+ " values(" + ville.getCodeCommune() + ",'" + ville.getNomCommune() + "','"
@@ -98,7 +113,13 @@ public class VilleDAOImpl implements VilleDAO {
 			e.printStackTrace();
 		}finally {
 			try {
-				con.close();
+				if (con != null) {
+					con.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -108,9 +129,10 @@ public class VilleDAOImpl implements VilleDAO {
 
 	public void mettreAJour(Ville ville) {
 		Connection con = null;
+		Statement stmt = null;
 		try {
 			con = JDBCConfiguration.getonnexionBDD();
-			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
 			stmt.executeUpdate("UPDATE ville_france SET Nom_commune=' " + ville.getNomCommune() + "', Code_postal='"
 					+ ville.getCodePostal() + "', Libelle_acheminement='" + ville.getLibelleAcheminement()
 					+ "', Ligne_5 = '" + ville.getLigne() + "', Latitude='" + ville.getLatitude() + "', Longitude='"
@@ -120,7 +142,12 @@ public class VilleDAOImpl implements VilleDAO {
 			e.printStackTrace();
 		}finally {
 			try {
-				con.close();
+				if (con != null) {
+					con.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -131,15 +158,21 @@ public class VilleDAOImpl implements VilleDAO {
 	@Override
 	public void supprimerLigne(String code_commune_INSEE) {
 		Connection con = null;
+		Statement stmt = null;
 		try {
 			con = JDBCConfiguration.getonnexionBDD();
-			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
 			stmt.executeUpdate("DELETE FROM ville_france WHERE Code_commune_INSEE = '" + code_commune_INSEE + "'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				con.close();
+				if (con != null) {
+					con.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
