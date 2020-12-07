@@ -37,6 +37,8 @@ public class VilleDAOImpl implements VilleDAO {
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			System.out.println("Finally");
 		}
 		return villes;
 	}
@@ -66,6 +68,8 @@ public class VilleDAOImpl implements VilleDAO {
 		} catch (SQLException e) {
 			System.out.println("Une erreur s'est produite.");
 			return null;
+		}finally {
+			System.out.println("Finally");
 		}
 
 	}
@@ -81,6 +85,8 @@ public class VilleDAOImpl implements VilleDAO {
 							+ "," + ville.getCodePostal() + "," + ville.getLongitude() + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			System.out.println("Finally");
 		}
 	}
 
@@ -95,6 +101,8 @@ public class VilleDAOImpl implements VilleDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			System.out.println("Finally");
 		}
 	}
 
@@ -106,6 +114,8 @@ public class VilleDAOImpl implements VilleDAO {
 			stmt.executeUpdate("DELETE FROM ville_france WHERE Code_commune_INSEE = '" + code_commune_INSEE + "'");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			System.out.println("Finally");
 		}
 	}
 }
