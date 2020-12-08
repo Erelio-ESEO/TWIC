@@ -18,7 +18,7 @@ import com.dto.Ville;
 //import com.blo.VilleBLO;
 
 @RestController
-//@RequestMapping("/path")
+// @RequestMapping("/path")
 class VilleController {
 
 	@Autowired
@@ -55,7 +55,7 @@ class VilleController {
 
 	// Methode DELETE
 	@RequestMapping(value = "/ville/delete/{Code_commune_INSEE}", method = RequestMethod.DELETE)
-	public void deleteEmployeeById(@PathVariable("Code_commune_INSEE") String Code_commune_INSEE ) throws Exception {
+	public void appelDelete(@PathVariable("Code_commune_INSEE") String Code_commune_INSEE) throws Exception {
 		System.out.println("Appel DELETE");
 		villeService.supprimerLigne(Code_commune_INSEE);
 	}

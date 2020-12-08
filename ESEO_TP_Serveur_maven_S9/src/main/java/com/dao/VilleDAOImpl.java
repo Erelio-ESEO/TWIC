@@ -152,10 +152,13 @@ public class VilleDAOImpl implements VilleDAO {
 		try {
 			con = JDBCConfiguration.getonnexionBDD();
 			stmt = con.createStatement();
-			stmt.executeUpdate("UPDATE ville_france SET Nom_commune=' " + ville.getNomCommune() + "', Code_postal='"
+			String sql = "UPDATE ville_france SET Nom_commune='" + ville.getNomCommune() + "', Code_postal='"
 					+ ville.getCodePostal() + "', Libelle_acheminement='" + ville.getLibelleAcheminement() + "', Ligne_5 = '"
 					+ ville.getLigne() + "', Latitude='" + ville.getLatitude() + "', Longitude='" + ville.getLongitude()
-					+ "'  WHERE Code_commune_INSEE=' " + ville.getCodeCommune() + "'");
+					+ "'  WHERE Code_commune_INSEE='" + ville.getCodeCommune() + "'";
+			System.out.println(sql);
+			stmt.executeUpdate(sql);
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();

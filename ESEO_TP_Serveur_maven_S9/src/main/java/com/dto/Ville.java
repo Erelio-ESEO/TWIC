@@ -2,6 +2,12 @@ package com.dto;
 
 public class Ville {
 	
+	@Override
+	public String toString() {
+		return "Ville [codeCommune=" + codeCommune + ", nomCommune=" + nomCommune + ", codePostal=" + codePostal
+				+ ", libelleAcheminement=" + libelleAcheminement + ", ligne=" + ligne + ", longitude=" + longitude + ", latitude="
+				+ latitude + "]";
+	}
 	private String codeCommune;
 	private String nomCommune;
 	private String codePostal;
